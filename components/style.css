@@ -1,0 +1,12 @@
+.row{
+display: flex;
+flex-direction: row;
+width: 100%;
+}
+.img{
+    width: 90%;
+}
+.para{
+    text-align: center;
+    color: blue;
+}

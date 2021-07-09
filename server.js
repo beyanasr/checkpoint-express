@@ -1,10 +1,20 @@
 const express = require("express");
-const dateTime = require("./middleware/timer");
 const app = express();
-app.use(express.json());
-app.use(dateTime);
-app.listen(5000, (err) => {
-  err ? console.log(err) : console.log(`server running `);
-});
+const port = 5000;
+const verifTime = require("./middleware/time");
 
-app.use(express.static('components'))
+const path=require('path') 
+
+app.get('/',verifTime,(req,res)=>{ res.sendFile(path.join(__dirname,'components','Home.html'))})
+
+app.get('/Home.html',(req,res)=>res.sendFile(__dirname,'components','Home.html'))
+app.get('/Contact.html',(req,res)=>res.sendFile('G:\Nouveau dossier\school stuff\GOMYCODE\checkpoint-Express\components\Contact.html'))
+app.get('/Service.html',(req,res)=>res.sendFile('G:\Nouveau dossier\school stuff\GOMYCODE\checkpoint-Express\components\OurServices.html'))
+
+app.listen(port, function () {
+  console.log(
+    "The server is running, " +
+      " please, open your browser at http://localhost:%s",
+    port
+  );
+});
